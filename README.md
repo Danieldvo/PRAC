@@ -31,7 +31,7 @@ Esta herramienta permite explorar el mercado de alquiler vacacional en Madrid cr
 | Fuente | Descripción |
 |--------|-------------|
 | [Inside Airbnb](http://insideairbnb.com/) | Listings activos en Madrid (2024): precios, disponibilidad, valoraciones |
-| Idealista API | Precio medio por m² por barrio (para estimar coste de adquisición) |
+|  [Idealista API](https://www.idealista.com/sala-de-prensa/informes-precio-vivienda/venta/madrid-comunidad/madrid-provincia/madrid/) | Precio medio por m² por barrio (para estimar coste de adquisición) |
 | OpenStreetMap (POI) | 44 puntos de interés turístico de Madrid |
 
 ### Métrica principal calculada
