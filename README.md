@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 
-Aplicación interactiva desarrollada como proyecto de visualización para el **Máster en Data Science (UOC)** — PRAC2.
+Aplicación interactiva desarrollada como proyecto de visualización para el **Máster en Data Science (UOC)** — PRAC.
 
 Analiza 8.296 alojamientos activos en Madrid para responder a una pregunta clave: **¿merece la pena invertir en Airbnb en Madrid, y dónde?**
 
