@@ -1,6 +1,6 @@
 # 🏠 Inversión Airbnb Madrid — Visualización Interactiva
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://cbfj7cwpzly6yypwrpfyxq.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://airbnb-madrid-inversion.streamlit.app)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 
@@ -93,6 +93,10 @@ streamlit_app/
 ├── run.bat                   # Script de ejecución en Windows
 ├── LICENSE                   # Licencia MIT
 ├── README.md                 # Este archivo
+├── notebooks/
+│   ├── 01_ImportacionDatos.ipynb    # Carga y limpieza de datos brutos de Airbnb e Idealista
+│   ├── 02_CreacionVariables.ipynb   # Ingeniería de variables: margen bruto, atractivo turístico, discretización
+│   └── 03_Analisis.ipynb            # Análisis exploratorio, estadísticas descriptivas y validación
 └── data/
     ├── tablon_analitico.csv  # Dataset principal (8.296 filas × 27 cols)
     └── poi_madrid.csv        # Puntos de interés turístico (44 POIs)
