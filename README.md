@@ -1,6 +1,6 @@
 # 🏠 Inversión Airbnb Madrid — Visualización Interactiva
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://cbfj7cwpzly6yypwrpfyxq.streamlit.app/)
+![Streamlit App](https://cbfj7cwpzly6yypwrpfyxq.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 
