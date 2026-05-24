@@ -232,6 +232,13 @@ st.markdown(f"""
       padding-bottom: 6px;
       margin-bottom: 18px;
   }}
+  /* Chart subtitles — force dark color regardless of Streamlit theme */
+  .chart-label {{
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: {PRIMARY} !important;
+      margin-bottom: 4px;
+  }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -480,7 +487,7 @@ elif page == "🏠  Resumen del mercado":
     col_a, col_b = st.columns(2)
 
     with col_a:
-        st.markdown("**Margen bruto por distrito**")
+        st.markdown('<p class="chart-label">Margen bruto por distrito</p>', unsafe_allow_html=True)
         dist_margen = (
             df.groupby("distrito")["margen_bruto"]
             .median()
@@ -502,7 +509,7 @@ elif page == "🏠  Resumen del mercado":
         st.plotly_chart(fig1, use_container_width=True)
 
     with col_b:
-        st.markdown("**Distribución por tipo de alojamiento**")
+        st.markdown('<p class="chart-label">Distribución por tipo de alojamiento</p>', unsafe_allow_html=True)
         rt_counts = df["room_type"].value_counts().reset_index()
         rt_counts.columns = ["room_type", "count"]
         fig2 = go.Figure(go.Pie(
@@ -516,7 +523,7 @@ elif page == "🏠  Resumen del mercado":
         fig2 = fig_defaults(fig2, height=280)
         st.plotly_chart(fig2, use_container_width=True)
 
-        st.markdown("**Precio/noche por tipo y habitaciones**")
+        st.markdown('<p class="chart-label">Precio/noche por tipo y habitaciones</p>', unsafe_allow_html=True)
         hab_order = ["0 hab.", "1 hab.", "2 hab.", "3 hab.", "4+ hab."]
         df_box = df[df["hab_label"].isin(hab_order)].copy()
         fig3 = px.violin(
@@ -550,7 +557,7 @@ elif page == "🗺️  ¿Dónde invertir?":
     map_col, chart_col = st.columns([1.1, 1])
 
     with map_col:
-        st.markdown("**Mapa de calor · Margen bruto por alojamiento**")
+        st.markdown('<p class="chart-label">Mapa de calor · Margen bruto por alojamiento</p>', unsafe_allow_html=True)
 
         m = folium.Map(
             location=[40.416, -3.703],
@@ -595,7 +602,7 @@ elif page == "🗺️  ¿Dónde invertir?":
         st_folium(m, width=None, height=400, returned_objects=[])
 
     with chart_col:
-        st.markdown("**Rentabilidad vs. Demanda turística por distrito**")
+        st.markdown('<p class="chart-label">Rentabilidad vs. Demanda turística por distrito</p>', unsafe_allow_html=True)
 
         dist_agg = df.groupby("distrito").agg(
             margen=("margen_bruto", "median"),
@@ -625,7 +632,7 @@ elif page == "🗺️  ¿Dónde invertir?":
         fig4.update_coloraxes(showscale=False)
         st.plotly_chart(fig4, use_container_width=True)
 
-        st.markdown("**Top 8 distritos — Margen bruto mediano**")
+        st.markdown('<p class="chart-label">Top 8 distritos — Margen bruto mediano</p>', unsafe_allow_html=True)
         top8 = dist_agg.nlargest(8, "margen").sort_values("margen", ascending=True)
         fig5 = go.Figure(go.Bar(
             x=top8["margen"],
@@ -659,7 +666,7 @@ elif page == "💰  ¿Cuánto ganaré?":
     col_l, col_r = st.columns(2)
 
     with col_l:
-        st.markdown("**Ingreso anual mediano por tipo y habitaciones**")
+        st.markdown('<p class="chart-label">Ingreso anual mediano por tipo y habitaciones</p>', unsafe_allow_html=True)
         hab_order = ["0 hab.", "1 hab.", "2 hab.", "3 hab.", "4+ hab."]
         heatmap_data = (
             df[df["hab_label"].isin(hab_order)]
@@ -694,7 +701,7 @@ elif page == "💰  ¿Cuánto ganaré?":
         st.plotly_chart(fig6, use_container_width=True)
 
     with col_r:
-        st.markdown("**Margen bruto mediano por tipo y habitaciones**")
+        st.markdown('<p class="chart-label">Margen bruto mediano por tipo y habitaciones</p>', unsafe_allow_html=True)
         heatmap_mb = (
             df[df["hab_label"].isin(hab_order)]
             .groupby(["room_type", "hab_label"])["margen_bruto"]
@@ -727,7 +734,7 @@ elif page == "💰  ¿Cuánto ganaré?":
         fig7.update_yaxes(title_text="Tipo de alojamiento", **AXIS_STYLE)
         st.plotly_chart(fig7, use_container_width=True)
 
-    st.markdown("**Coste de adquisición vs. Ingreso anual esperado · coloreado por margen bruto**")
+    st.markdown('<p class="chart-label">Coste de adquisición vs. Ingreso anual esperado · coloreado por margen bruto</p>', unsafe_allow_html=True)
 
     smp = df.sample(min(1500, len(df)), random_state=42)
     fig8 = px.scatter(
@@ -841,9 +848,9 @@ elif page == "🎯  Conclusiones":
 
     insights = [
         ("🏡", f"La tipología <strong>{best_type[0]}</strong> con <strong>{best_type[1]}</strong> ofrece el mayor margen bruto mediano: <strong>{best_mb:.1f}%</strong>. Apostar por pisos completos de 1-2 habitaciones es la estrategia más rentable."),
-        ("📍", f"El distrito <strong>{top1_name}</strong> es el más rentable con los filtros actuales, con ingresos anuales medianos de <strong>€{{top1_ing:,.0f}}</strong> — un <strong>{{pct_mejor:+.0f}}%</strong> sobre la media general de €{{global_ing:,.0f}}."),
-        ("🗺️", f"La correlación entre atractivo turístico (POIs cercanos) y ocupación es de <strong>r = {{corr_val:.3f}}</strong>. La proximidad a monumentos y transporte influye moderadamente en la demanda, pero no es el único factor."),
-        ("💶", f"El precio/noche mediano en <strong>{{top1_name}}</strong> es de <strong>€{{top1_precio:.0f}}</strong>, frente a los €{{df['precio_noche'].median():.0f}} de la media global. Un precio diferencial que refleja la mayor demanda de la zona."),
+        ("📍", f"El distrito <strong>{top1_name}</strong> es el más rentable con los filtros actuales, con ingresos anuales medianos de <strong>€{top1_ing:,.0f}</strong> — un <strong>{pct_mejor:+.0f}%</strong> sobre la media general de €{global_ing:,.0f}."),
+        ("🗺️", f"La correlación entre atractivo turístico (POIs cercanos) y ocupación es de <strong>r = {corr_val:.3f}</strong>. La proximidad a monumentos y transporte influye moderadamente en la demanda, pero no es el único factor."),
+        ("💶", f"El precio/noche mediano en <strong>{top1_name}</strong> es de <strong>€{top1_precio:.0f}</strong>, frente a los €{df['precio_noche'].median():.0f} de la media global. Un precio diferencial que refleja la mayor demanda de la zona."),
     ]
 
     for icon, text in insights:
