@@ -1,0 +1,45 @@
+name,lat,lon,weight,category
+Puerta del Sol,40.4169,-3.7035,1.0,Monument
+Plaza Mayor,40.4155,-3.7074,0.95,Monument
+Palacio Real,40.4179,-3.7143,0.95,Monument
+Catedral de la Almudena,40.4153,-3.7142,0.85,Monument
+Templo de Debod,40.4240,-3.7170,0.7,Monument
+Plaza de España,40.4230,-3.7104,0.7,Square
+Gran Vía (Callao),40.4203,-3.7060,0.85,Shopping
+Museo del Prado,40.4138,-3.6921,1.0,Museum
+Museo Reina Sofía,40.4087,-3.6942,0.9,Museum
+Museo Thyssen-Bornemisza,40.4160,-3.6946,0.9,Museum
+Parque del Retiro (Puerta de Alcalá),40.4206,-3.6889,0.8,Park
+Palacio de Cristal (Retiro),40.4145,-3.6828,0.75,Park
+Puerta de Alcalá,40.4201,-3.6889,0.8,Monument
+Plaza de Cibeles,40.4199,-3.6922,0.75,Monument
+Estación de Atocha,40.4066,-3.6903,0.7,Transport
+El Rastro,40.4081,-3.7074,0.65,Market
+Mercado de San Miguel,40.4154,-3.7094,0.7,Market
+Matadero Madrid,40.3917,-3.6973,0.6,Cultural
+Estadio Santiago Bernabéu,40.4531,-3.6884,0.8,Sports
+Barrio de Malasaña (centro),40.4270,-3.7045,0.7,Neighborhood
+Barrio de Chueca (centro),40.4205,-3.6990,0.7,Neighborhood
+Barrio de La Latina (centro),40.4110,-3.7106,0.7,Neighborhood
+Barrio de Lavapiés (centro),40.4080,-3.7009,0.65,Neighborhood
+Casa de Campo (entrada principal),40.4218,-3.7375,0.6,Park
+Zoo Aquarium Madrid,40.4047,-3.7636,0.6,Attraction
+Parque de Atracciones Madrid,40.4116,-3.7589,0.6,Attraction
+Santiago Bernabéu Tour Entrance,40.4528,-3.6883,0.7,Sports
+Palacio de Deportes WiZink Center,40.4239,-3.6713,0.6,Sports
+Real Jardín Botánico,40.4111,-3.6896,0.65,Park
+Teatro Real,40.4183,-3.7104,0.75,Theater
+Plaza de Santa Ana,40.4145,-3.7012,0.65,Square
+Calle Preciados (zona comercial),40.4197,-3.7059,0.7,Shopping
+Calle Serrano (zona comercial),40.4297,-3.6867,0.65,Shopping
+Mercado de San Antón,40.4228,-3.6981,0.6,Market
+Círculo de Bellas Artes,40.4196,-3.6983,0.65,Cultural
+Planetario de Madrid,40.3891,-3.6837,0.55,Cultural
+CaixaForum Madrid,40.4102,-3.6934,0.6,Museum
+Plaza de Oriente,40.4185,-3.7126,0.7,Square
+Palacio de Velázquez (Retiro),40.4160,-3.6812,0.65,Park
+Real Academia de Bellas Artes,40.4178,-3.7011,0.6,Museum
+Museo Arqueológico Nacional,40.4233,-3.6891,0.65,Museum
+Museo Sorolla,40.4353,-3.6915,0.6,Museum
+Estación de Chamartín,40.4721,-3.6825,0.5,Transport
+IFEMA Feria de Madrid,40.4674,-3.6167,0.5,Exhibition
