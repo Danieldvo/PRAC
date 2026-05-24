@@ -1,2 +1,0 @@
-# PRAC
-Practica uoc
