@@ -376,7 +376,7 @@ with st.sidebar:
     st.markdown(
         "<div style='font-size:0.72rem; color:rgba(255,255,255,0.6);'>"
         "Fuentes: Airbnb/Inside Airbnb · Idealista API · OSM POI<br>"
-        "Datos: Madrid, 2024</div>",
+        "Datos: Madrid, 2025</div>",
         unsafe_allow_html=True,
     )
 
@@ -465,7 +465,7 @@ if page == "📖  Introducción":
     <div class="method-box">
         <h4>📂 Fuentes de datos</h4>
         <ul>
-            <li><b>Inside Airbnb</b> (listings activos en Madrid, 2024): precios, disponibilidad, tipo de habitación, valoraciones.</li>
+            <li><b>Inside Airbnb</b> (listings activos en Madrid, 2025): precios, disponibilidad, tipo de habitación, valoraciones.</li>
             <li><b>Idealista API</b>: precio medio por m² por barrio para estimar el coste de adquisición.</li>
             <li><b>OpenStreetMap (POI)</b>: 44 puntos de interés turístico de Madrid para calcular el atractivo de cada barrio.</li>
         </ul>
