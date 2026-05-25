@@ -17,8 +17,8 @@ import branca.colormap as cm
 PRIMARY   = "#1A3A5C"
 SECONDARY = "#2E6DA4"
 ACCENT    = "#E87722"
-TEXT      = "#222222"
-LIGHT_BG  = "#F7F9FB"
+TEXT      = "#FAFAFA"
+LIGHT_BG  = "#1A2332"
 GOLD      = "#C9A84C"
 SILVER    = "#888888"
 BRONZE    = "#A0522D"
@@ -48,22 +48,22 @@ st.markdown(f"""
   }}
   /* KPI cards */
   .kpi-card {{
-      background: white;
+      background: #1E2D40;
       border-radius: 10px;
       padding: 16px 18px 12px;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
       border-top: 4px solid {ACCENT};
   }}
   .kpi-value {{
       font-size: 1.9rem;
       font-weight: 700;
-      color: {PRIMARY};
+      color: #7BB8D4;
       line-height: 1.1;
   }}
   .kpi-label {{
       font-size: 0.78rem;
-      color: #666;
+      color: #AAAAAA;
       margin-top: 4px;
   }}
   /* Intro hero */
@@ -87,10 +87,10 @@ st.markdown(f"""
   }}
   /* Question cards */
   .question-card {{
-      background: white;
+      background: #1E2D40;
       border-radius: 10px;
       padding: 18px 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
       border-left: 5px solid {ACCENT};
       height: 100%;
   }}
@@ -103,12 +103,12 @@ st.markdown(f"""
   .question-card h3 {{
       font-size: 1rem;
       font-weight: 700;
-      color: {PRIMARY};
+      color: #FAFAFA;
       margin: 6px 0 6px;
   }}
   .question-card p {{
       font-size: 0.85rem;
-      color: #555;
+      color: #AAAAAA;
       margin: 0;
   }}
   /* Methodology box */
@@ -116,36 +116,36 @@ st.markdown(f"""
       background: {LIGHT_BG};
       border-radius: 10px;
       padding: 20px 24px;
-      border: 1px solid #DDE3EB;
+      border: 1px solid #2A3E55;
   }}
   .method-box h4 {{
-      color: {PRIMARY};
+      color: #FAFAFA;
       font-size: 1rem;
       font-weight: 700;
       margin: 0 0 10px;
   }}
   .method-box p, .method-box li {{
       font-size: 0.87rem;
-      color: #444;
+      color: #BBBBBB;
       line-height: 1.55;
   }}
   /* Recommendation cards */
   .rec-gold {{
-      background: linear-gradient(135deg, #FFF8E7 0%, #FFF0C8 100%);
+      background: linear-gradient(135deg, #2A2210 0%, #3A3010 100%);
       border: 2px solid {GOLD};
       border-radius: 12px;
       padding: 16px 18px;
       text-align: center;
   }}
   .rec-silver {{
-      background: linear-gradient(135deg, #F5F5F5 0%, #EBEBEB 100%);
+      background: linear-gradient(135deg, #252525 0%, #303030 100%);
       border: 2px solid {SILVER};
       border-radius: 12px;
       padding: 16px 18px;
       text-align: center;
   }}
   .rec-bronze {{
-      background: linear-gradient(135deg, #FFF3EE 0%, #FFDDD0 100%);
+      background: linear-gradient(135deg, #2A1A10 0%, #3A2010 100%);
       border: 2px solid {BRONZE};
       border-radius: 12px;
       padding: 16px 18px;
@@ -158,7 +158,7 @@ st.markdown(f"""
   .rec-title {{
       font-size: 1.05rem;
       font-weight: 700;
-      color: {PRIMARY};
+      color: #FAFAFA;
       margin: 6px 0 4px;
   }}
   .rec-value {{
@@ -168,14 +168,14 @@ st.markdown(f"""
   }}
   .rec-sub {{
       font-size: 0.78rem;
-      color: #666;
+      color: #AAAAAA;
   }}
   /* Insight boxes */
   .insight-box {{
-      background: white;
+      background: #1E2D40;
       border-radius: 10px;
       padding: 16px 18px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
       border-left: 4px solid {SECONDARY};
       margin-bottom: 12px;
   }}
@@ -184,7 +184,7 @@ st.markdown(f"""
       margin-right: 8px;
   }}
   .insight-box strong {{
-      color: {PRIMARY};
+      color: #7BB8D4;
   }}
   /* Optimal profile */
   .profile-box {{
@@ -216,64 +216,64 @@ st.markdown(f"""
   }}
   /* AI disclaimer */
   .ai-disclaimer {{
-      background: #FFFBF0;
-      border: 1px solid #F0D080;
+      background: #2A2A15;
+      border: 1px solid #8A7020;
       border-radius: 8px;
       padding: 10px 14px;
       font-size: 0.78rem;
-      color: #665500;
+      color: #D4C070;
   }}
   /* Section headers */
   .section-header {{
       font-size: 1.3rem;
       font-weight: 700;
-      color: {PRIMARY};
+      color: #FAFAFA;
       border-bottom: 3px solid {ACCENT};
       padding-bottom: 6px;
       margin-bottom: 18px;
   }}
-  /* Chart subtitles — force dark color regardless of Streamlit theme */
+  /* Chart subtitles — color claro para dark mode */
   .chart-label {{
       font-size: 0.97rem;
       font-weight: 700;
-      color: {PRIMARY} !important;
+      color: #FAFAFA !important;
       margin-bottom: 4px;
   }}
   /* Simulator box */
   .sim-box {{
-      background: linear-gradient(135deg, #EBF3FB 0%, #F7FBFF 100%);
-      border: 1.5px solid #B5D4F4;
+      background: linear-gradient(135deg, #142030 0%, #1A2A3A 100%);
+      border: 1.5px solid #2E5070;
       border-radius: 12px;
       padding: 20px 26px 16px;
       margin-bottom: 22px;
   }}
   .sim-box h4 {{
-      color: {PRIMARY};
+      color: #FAFAFA;
       font-size: 1rem;
       font-weight: 700;
       margin: 0 0 4px;
   }}
   .sim-box p.sim-desc {{
       font-size: 0.83rem;
-      color: #555;
+      color: #AAAAAA;
       margin: 0 0 14px;
   }}
   .sim-result-ok {{
-      background: #E8F5E9;
-      border-left: 4px solid #2E7D32;
+      background: #0D2B10;
+      border-left: 4px solid #4CAF50;
       border-radius: 6px;
       padding: 10px 14px;
       font-size: 0.88rem;
-      color: #1B5E20;
+      color: #81C784;
       margin-top: 10px;
   }}
   .sim-result-warn {{
-      background: #FFF8E1;
+      background: #2B2000;
       border-left: 4px solid #F9A825;
       border-radius: 6px;
       padding: 10px 14px;
       font-size: 0.88rem;
-      color: #6D4C00;
+      color: #FFD54F;
       margin-top: 10px;
   }}
 </style>
@@ -283,22 +283,22 @@ st.markdown(f"""
 AXIS_STYLE = dict(
     tickfont=dict(size=11, color=TEXT),
     title_font=dict(size=12, color=TEXT),
-    showgrid=True, gridcolor="#E8E8E8",
-    linecolor="#CCCCCC", linewidth=1,
+    showgrid=True, gridcolor="#2A3E55",
+    linecolor="#3A5070", linewidth=1,
 )
 
 def fig_defaults(fig, height=320):
     fig.update_layout(
-        plot_bgcolor="white",
-        paper_bgcolor="white",
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
         font=dict(family="Arial, sans-serif", color=TEXT, size=11),
         height=height,
         margin=dict(l=10, r=10, t=6, b=36),
         title=dict(text=""),
         legend=dict(
             font=dict(size=11, color=TEXT),
-            bgcolor="rgba(255,255,255,0.9)",
-            bordercolor="#DDDDDD", borderwidth=0.5,
+            bgcolor="rgba(30,45,64,0.85)",
+            bordercolor="#2A3E55", borderwidth=0.5,
         ),
         coloraxis_colorbar=dict(
             title_font=dict(size=11, color=TEXT),
