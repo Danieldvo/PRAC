@@ -96,7 +96,6 @@ streamlit_app/
 ├── notebooks/
 │   ├── 01_ImportacionDatos.ipynb    # Carga y limpieza de datos brutos de Airbnb e Idealista
 │   ├── 02_CreacionVariables.ipynb   # Ingeniería de variables: margen bruto, atractivo turístico, discretización
-│   └── 03_Analisis.ipynb            # Análisis exploratorio, estadísticas descriptivas y validación
 └── data/
     ├── tablon_analitico.csv  # Dataset principal (8.296 filas × 27 cols)
     └── poi_madrid.csv        # Puntos de interés turístico (44 POIs)
