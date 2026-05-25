@@ -597,22 +597,31 @@ elif page == "🏠  Resumen del mercado":
         d_ing    = df_sel["ingreso_anual"].median()
         d_precio = df_sel["precio_noche"].median()
 
+        # Redondear al mismo nº de decimales que se muestra en pantalla
+        # para que el delta siempre cuadre con los valores visibles
+        d_margen_r = round(d_margen, 1)
+        g_margen_r = round(df["margen_bruto"].median(), 1)
+        d_ing_r    = round(d_ing, 0)
+        g_ing_r    = round(df["ingreso_anual"].median(), 0)
+        d_precio_r = round(d_precio, 0)
+        g_precio_r = round(df["precio_noche"].median(), 0)
+
         dd1, dd2, dd3, dd4 = st.columns(4)
         dd1.metric("Alojamientos", f"{d_n:,}")
         dd2.metric(
             "Margen bruto mediano",
-            f"{d_margen:.1f}%",
-            delta=f"{d_margen - df['margen_bruto'].median():+.1f}pp vs global",
+            f"{d_margen_r:.1f}%",
+            delta=f"{d_margen_r - g_margen_r:+.1f}pp vs global",
         )
         dd3.metric(
             "Ingreso anual mediano",
-            f"€{d_ing:,.0f}",
-            delta=f"{d_ing - df['ingreso_anual'].median():+,.0f} vs global",
+            f"€{d_ing_r:,.0f}",
+            delta=f"{d_ing_r - g_ing_r:+,.0f} vs global",
         )
         dd4.metric(
             "Precio/noche mediano",
-            f"€{d_precio:.0f}",
-            delta=f"{d_precio - df['precio_noche'].median():+.0f} vs global",
+            f"€{d_precio_r:.0f}",
+            delta=f"{d_precio_r - g_precio_r:+.0f} vs global",
         )
 
         st.markdown(
@@ -889,23 +898,28 @@ elif page == "💰  ¿Cuánto ganaré?":
     sim_ingreso_anual  = sim_precio_noche * sim_dias_ocupados
     sim_margen         = (sim_ingreso_anual / sim_precio_compra) * 100
 
-    mkt_ingreso_median = df["ingreso_anual"].median()
-    mkt_margen_median  = df["margen_bruto"].median()
-    mkt_coste_median   = df["coste_adquisicion"].median()
+    # Redondear a los mismos decimales que se muestran en pantalla
+    # para que los deltas cuadren con los valores visibles
+    mkt_ingreso_median = round(df["ingreso_anual"].median(), 0)
+    mkt_margen_median  = round(df["margen_bruto"].median(), 2)
+    mkt_coste_median   = round(df["coste_adquisicion"].median(), 0)
 
-    delta_ingreso = sim_ingreso_anual - mkt_ingreso_median
-    delta_margen  = sim_margen - mkt_margen_median
+    sim_ingreso_r = round(sim_ingreso_anual, 0)
+    sim_margen_r  = round(sim_margen, 2)
+
+    delta_ingreso = sim_ingreso_r - mkt_ingreso_median
+    delta_margen  = sim_margen_r  - mkt_margen_median
 
     sim_res1, sim_res2, sim_res3, sim_res4 = st.columns(4)
     sim_res1.metric(
         "Ingreso anual estimado",
-        f"€{sim_ingreso_anual:,.0f}",
+        f"€{sim_ingreso_r:,.0f}",
         delta=f"{delta_ingreso:+,.0f} vs mediana mercado",
         delta_color="normal",
     )
     sim_res2.metric(
         "Margen bruto estimado",
-        f"{sim_margen:.2f}%",
+        f"{sim_margen_r:.2f}%",
         delta=f"{delta_margen:+.2f}pp vs mediana mercado",
         delta_color="normal",
     )
