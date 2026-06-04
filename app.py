@@ -1115,42 +1115,6 @@ elif page == "🎯  Conclusiones":
     fig_c.update_xaxes(title_text="Margen bruto mediano (%)")
     st.plotly_chart(fig_c, use_container_width=True)
 
-    # ── 4 insights ───────────────────────────────────────────
-    st.markdown("#### 💡 Hallazgos clave del análisis")
-
-    # Mejor tipología
-    best_type = (
-        df.groupby(["room_type", "hab_label"])["margen_bruto"]
-        .median()
-        .idxmax()
-    )
-    best_mb = df.groupby(["room_type", "hab_label"])["margen_bruto"].median().max()
-
-    # Correlación ocupación-atractivo
-    corr_val = df["estimated_occupancy_l365d"].corr(df["atractivo_turistico"])
-
-    # Ingreso mediano top distrito
-    top1_name  = dist_rank.iloc[0]["distrito"]
-    top1_ing   = df[df["distrito"] == top1_name]["ingreso_anual"].median()
-    global_ing = df["ingreso_anual"].median()
-    pct_mejor  = (top1_ing / global_ing - 1) * 100
-
-    # Precio/noche top vs global
-    top1_precio = df[df["distrito"] == top1_name]["precio_noche"].median()
-
-    insights = [
-        ("🏡", f"La tipología <strong>{best_type[0]}</strong> con <strong>{best_type[1]}</strong> ofrece el mayor margen bruto mediano: <strong>{best_mb:.1f}%</strong>. Apostar por pisos completos de 1-2 habitaciones es la estrategia más rentable."),
-        ("📍", f"El distrito <strong>{top1_name}</strong> es el más rentable con los filtros actuales, con ingresos anuales medianos de <strong>€{top1_ing:,.0f}</strong> — un <strong>{pct_mejor:+.0f}%</strong> sobre la media general de €{global_ing:,.0f}."),
-        ("🗺️", f"La correlación entre atractivo turístico (POIs cercanos) y ocupación es de <strong>r = {corr_val:.3f}</strong>. La proximidad a monumentos y transporte influye moderadamente en la demanda, pero no es el único factor."),
-        ("💶", f"El precio/noche mediano en <strong>{top1_name}</strong> es de <strong>€{top1_precio:.0f}</strong>, frente a los €{df['precio_noche'].median():.0f} de la media global. Un precio diferencial que refleja la mayor demanda de la zona."),
-    ]
-
-    for icon, text in insights:
-        st.markdown(
-            f'<div class="insight-box"><span class="i-icon">{icon}</span>{text}</div>',
-            unsafe_allow_html=True,
-        )
-
     st.markdown("<br>", unsafe_allow_html=True)
 
     # ── Comparador de dos distritos ───────────────────────────
@@ -1263,48 +1227,6 @@ elif page == "🎯  Conclusiones":
                 ],
             }
             st.dataframe(pd.DataFrame(cmp_rows), use_container_width=True, hide_index=True)
-
-    st.markdown("<br>", unsafe_allow_html=True)
-
-    # ── Perfil óptimo de inversión ────────────────────────────
-    st.markdown("#### 🎯 Perfil óptimo de inversión (selección actual)")
-
-    best_overall = (
-        df.groupby(["distrito", "room_type", "hab_label"])
-        .agg(margen=("margen_bruto", "median"), n=("margen_bruto", "count"))
-        .query("n >= 5")
-        .sort_values("margen", ascending=False)
-        .head(1)
-    )
-
-    if not best_overall.empty:
-        bo = best_overall.iloc[0]
-        bo_dist, bo_room, bo_hab = bo.name
-        bo_margen  = bo["margen"]
-        bo_ingreso = df[
-            (df["distrito"] == bo_dist) &
-            (df["room_type"] == bo_room) &
-            (df["hab_label"] == bo_hab)
-        ]["ingreso_anual"].median()
-        bo_coste = df[
-            (df["distrito"] == bo_dist) &
-            (df["room_type"] == bo_room) &
-            (df["hab_label"] == bo_hab)
-        ]["coste_adquisicion"].median()
-
-        st.markdown(f"""
-        <div class="profile-box">
-            <h3>✅ Combinación con mayor margen bruto mediano (mín. 5 casos)</h3>
-            <div class="profile-item"><span class="label">📍 Distrito</span><span class="val">{bo_dist}</span></div>
-            <div class="profile-item"><span class="label">🏠 Tipo de alojamiento</span><span class="val">{bo_room}</span></div>
-            <div class="profile-item"><span class="label">🛏️ Habitaciones</span><span class="val">{bo_hab}</span></div>
-            <div class="profile-item"><span class="label">💰 Margen bruto mediano</span><span class="val">{bo_margen:.1f}%</span></div>
-            <div class="profile-item"><span class="label">📈 Ingreso anual mediano</span><span class="val">€{bo_ingreso:,.0f}</span></div>
-            <div class="profile-item"><span class="label">🏦 Coste adquisición mediano</span><span class="val">€{bo_coste:,.0f}</span></div>
-        </div>
-        """, unsafe_allow_html=True)
-    else:
-        st.info("Amplía los filtros para ver el perfil óptimo (se necesitan mínimo 5 casos por combinación).")
 
     st.markdown("<br>", unsafe_allow_html=True)
 
