@@ -1,4 +1,4 @@
-# 🏠 Inversión Airbnb Madrid — Visualización Interactiva
+# 🏠 Inversión Airbnb Madrid — Visualización Interactiva.
 
 [Streamlit App](https://mercado-inmobiliario-dvo.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
